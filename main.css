@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+}
+
+fieldset, .results, .container{
+    width: 70%;
+    margin: 40px auto;
+}
+
+h1{
+    font-size: 22px;
+}
+
+h2{
+    font-size: 20px;
+}
+
+h3{
+    font-size: 18px;
+}
+
+h1,h2,legend, form, .error{
+    text-align: center;
+}
+
+li{
+    list-style-type: none;
+}
+
+.error{
+    color: #ff0000;
+}
+
+.text-container{
+    padding: 5px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.state, #submit{
+    display: block;
+    margin: 10px auto;
+}
+
+  
