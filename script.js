@@ -2,7 +2,6 @@
 
 const apiKey = 'pefW7QOeIChiMN5oYxctfDQ5xBjfqp5gCL9ilnZb'; 
 const searchURL = 'https://developer.nps.gov/api/v1/parks';
-const selectedStates = [];
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -17,6 +16,7 @@ function displayResults(responseJson) {
     $('.results-list').append(
       `<li><h3>${element.fullName}</h3>
       <p>${element.description}</p>
+      <p>State: ${element.states}</p>
       <p><a href ="${element.url}" target="_blank">More Information</a></p>
       </li>
       <p><a href="${element.directionsUrl}" target="_blank">Directions</a></p>`  
@@ -50,12 +50,18 @@ function getParks(state, maxResults) {
     });
 }
 
+function getStates(){
+  const selectedStates = [];
+  $('select option:selected').each(function(){selectedStates.push($(this).val());})
+  return selectedStates;
+}
+
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
-    const searchPark = $('select option:selected').each(function(){selectedStates.push($(this).val());})
+    const selectedStates =getStates();
     const maxResults = $('#max-results').val();
-    getParks(searchPark, maxResults);
+    getParks(selectedStates, maxResults);
   });
 }
 
